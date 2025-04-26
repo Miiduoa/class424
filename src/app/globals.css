@@ -1,0 +1,132 @@
+/* 防止重疊問題修復 */
+body {
+  color: rgb(var(--foreground-rgb));
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  line-height: 1.5;
+}
+
+/* 全局修復，確保所有元素有適當的邊距和間距 */
+* {
+  box-sizing: border-box;
+}
+
+/* 容器樣式修復 */
+div.min-h-screen {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  overflow: hidden; /* 防止內容溢出 */
+}
+
+/* 防止水平滾動和內容重疊 */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* 修復文字重疊問題 */
+h1, h2, h3, h4, h5, h6, p, span, a, li {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* 修復導航菜單重疊問題 */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50; /* 確保導航在最上層 */
+  width: 100%;
+  background-color: rgba(var(--background-end-rgb), 0.95);
+  backdrop-filter: blur(8px);
+  margin-bottom: 20px; /* 增加底部間距 */
+  border-bottom: 1px solid rgba(0,0,0,0.1); /* 添加底部邊框 */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 添加陰影 */
+}
+
+/* 修復頂部重疊問題 */
+.site-header a {
+  text-decoration: none;
+  display: block;
+  position: relative;
+  z-index: 5;
+  padding: 4px 0;
+}
+
+/* 修復頂部logo區域 */
+.flex-none {
+  flex: 0 0 auto;
+  max-width: 80%;
+  position: relative;
+  z-index: 5;
+}
+
+/* 修復表格和卡片重疊問題 */
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* 確保卡片和內容區塊不重疊 */
+.card, .bg-white {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+/* 修復表單和輸入框重疊問題 */
+input, select, textarea {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* 修復按鈕重疊問題 */
+button {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 修復圖標和文字重疊問題 */
+.flex {
+  flex-wrap: wrap;
+}
+
+/* 確保所有內容區塊有適當的間距 */
+main {
+  padding-top: 2rem;
+}
+
+/* 確保響應式布局不會導致重疊 */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .grid {
+    display: block;
+  }
+  
+  .grid > * {
+    margin-bottom: 1rem;
+  }
+  
+  .flex-col-md\:flex-row {
+    flex-direction: column;
+  }
+
+  /* 移動裝置上的標頭調整 */
+  .site-header {
+    padding: 0.5rem 0;
+  }
+
+  .site-header a {
+    font-size: 1.5rem;
+  }
+} 
